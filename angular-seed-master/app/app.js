@@ -9,7 +9,9 @@ angular.module('issueTracker', [
     'issueTracker.dashboard',
     'issueTracker.main',
     'issueTracker.user.identity',
-    'issueTracker.dashboardProjects'
+    'issueTracker.dashboardProjects',
+    'issueTracker.projects',
+    'issueTracker.addProjects'
 
 ])
       .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
@@ -38,9 +40,20 @@ angular.module('issueTracker', [
           }]);
        }])
 
-    .run(['authentication', '$rootScope', function(authentication, $rootScope){
+    .run(['authentication', 'identity', '$rootScope', '$location', function(authentication, identity, $rootScope, $location){
        authentication.refreshCookie();
-        $rootScope.mainControllerAuthentication = true;
+        if(authentication.isAuthenticated()){
+            $rootScope.mainControllerAuthentication = true;
+        }
+
+        var currentUser = identity.getCurrentUser();
+
+        if(currentUser.isAdmin){
+            $rootScope.checkForAddProjectButton = false;
+        }
+        else{
+            $rootScope.checkForAddProjectButton = true;
+        }
     }])
 
       .constant('main_URL', 'http://softuni-issue-tracker.azurewebsites.net/api/')

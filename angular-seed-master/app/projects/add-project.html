@@ -1,0 +1,46 @@
+<div ng-controller="AddProjectsController">
+    <div ng-if=checkForAddProjectButton id="formsContainer">
+        <form class="form-horizontal" name="addProjectForm">
+            <fieldset>
+                <div class="col-lg-3">
+                    <br/>
+                    <div class="form-group">
+                        <label class="control-label" for="ProjName">Name</label>
+                        <input class="form-control" ng-model="project.Name" required="required" id="ProjName" type="text" >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="Description">Description</label>
+                    <input class="form-control" ng-model="project.Description" required="required" type="text" id="Description">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="ProjKey">Project Key</label>
+                        <input type="text" required="required" ng-model="project.ProjectKey" class="form-control" id="ProjKey">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="leadId">LeadId</label>
+                        <input class="form-control"  ng-model="project.LeadId" required="required" type="text" id="leadId">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="Priorities">Priorities</label>
+                        <input class="form-control" required="required" ng-model="project.Priorities" type="text" id="Priorities">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="Labels">Labels</label>
+                        <input class="form-control" required="required" ng-model="project.Labels" type="text" id="Labels">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" ng-disabled="addProjectForm.$invalid">Add Project</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        {{project}}
+    </div>
+
+</div>

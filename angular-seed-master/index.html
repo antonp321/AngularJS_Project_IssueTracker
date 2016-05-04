@@ -19,8 +19,8 @@
 <body ng-controller="MainController">
 
 <div ng-if="mainControllerAuthentication" class="buttons">
-  <button>Projects</button>
-  <button>Dashboards</button>
+  <button ng-click="projectPath()">Projects</button>
+  <button ng-click="dashboardPath()">Dashboards</button>
   <button  ng-controller="HomeController" ng-click="logoutt()">LogOut</button>
 </div>
 
@@ -35,11 +35,13 @@
   <script src="app/bower_components/angular-route/angular-route.js"></script>
   <script src="app/app.js"></script>
   <script src="app/user/authentication.js"></script>
-<script src="app/user/identity.js"></script>
+  <script src="app/user/identity.js"></script>
   <script src="app/home/home-controller.js"></script>
   <script src="app/dashboard/dashboard-controller.js"></script>
   <script src="app/dashboard/dashboardProjects.js"></script>
   <script src="app/common/main-controller.js"></script>
-<script src="app/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="app/projects/projects-controller.js"></script>
+<script src="app/projects/add-project-controller.js"></script>
+  <script src="app/bower_components/angular-cookies/angular-cookies.js"></script>
 </body>
 </html>

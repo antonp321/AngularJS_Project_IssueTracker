@@ -4,6 +4,12 @@ angular.module('issueTracker.home', ['issueTracker.user.authentication'])
                 templateUrl: 'app/home/home.html',
                 controller: 'HomeController'
             })
+            .when('/projects', {
+                templateUrl: 'app/projects/projects-home.html'
+            })
+            .when('/projects/addProject', {
+                templateUrl: 'app/projects/add-project.html'
+            })
             .otherwise({
                 redirectTo: "/"
             });
@@ -12,7 +18,6 @@ angular.module('issueTracker.home', ['issueTracker.user.authentication'])
         .controller('HomeController', ['$scope', '$location', '$rootScope', 'authentication', function($scope, $location, $rootScope, authentication){
 
             $scope.authenticationCheckerHomeCtrl = authentication.isAuthenticated();
-
 
             $scope.login = function(user){
                 authentication.loginUser(user)
