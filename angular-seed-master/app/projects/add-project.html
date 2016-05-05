@@ -35,12 +35,11 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary" ng-disabled="addProjectForm.$invalid">Add Project</button>
+                        <button type="submit" class="btn btn-primary" ng-click="addTheProject(projectObjectForRequest)" ng-disabled="addProjectForm.$invalid">Add Project</button>
                     </div>
                 </div>
             </fieldset>
         </form>
-        {{project}}
     </div>
 
 </div>

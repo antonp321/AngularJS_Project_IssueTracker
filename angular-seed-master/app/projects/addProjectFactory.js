@@ -1,4 +1,4 @@
-angular.module('issueTracker.user.authentication', [])
+angular.module('issueTracker.addProjectFactory', [])
 
     .factory('projectRequests', ['$http', '$q', function($http, $q){
 

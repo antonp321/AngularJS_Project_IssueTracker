@@ -11,7 +11,8 @@ angular.module('issueTracker', [
     'issueTracker.user.identity',
     'issueTracker.dashboardProjects',
     'issueTracker.projects',
-    'issueTracker.addProjects'
+    'issueTracker.addProjects',
+    'issueTracker.addProjectFactory'
 
 ])
       .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
