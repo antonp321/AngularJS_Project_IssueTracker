@@ -21,7 +21,14 @@
 <div ng-if="mainControllerAuthentication" class="buttons">
   <button ng-click="projectPath()">Projects</button>
   <button ng-click="dashboardPath()">Dashboards</button>
-  <button  ng-controller="HomeController" ng-click="logoutt()">LogOut</button>
+  <button ng-controller="HomeController" ng-click="logoutt()">LogOut</button>
+  <div ng-if=checkForMainAdmin class="col-lg-2">
+      <select class="form-control" required="required" ng-model="nonAdminUser.idd" id="nonAdminUser">
+        <option ng-repeat="el in nonAdminArray" value={{el.Id}}>{{el.Username}}</option>
+      </select>
+     <button ng-click="makeAdmin1(nonAdminUser.idd)">Make Admin</button>
+    {{itsAdmin}}
+  </div>
 </div>
 
   <div ng-view>

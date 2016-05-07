@@ -15,7 +15,7 @@ angular.module('issueTracker.home', ['issueTracker.user.authentication'])
             });
 
         }])
-        .controller('HomeController', ['$scope', '$location', '$rootScope', 'authentication', function($scope, $location, $rootScope, authentication){
+        .controller('HomeController', ['$scope', '$location', '$rootScope', 'authentication', 'identity', function($scope, $location, $rootScope, authentication, identity){
 
             $scope.authenticationCheckerHomeCtrl = authentication.isAuthenticated();
 
@@ -23,6 +23,29 @@ angular.module('issueTracker.home', ['issueTracker.user.authentication'])
                 authentication.loginUser(user)
                     .then(function(loggedUser){
                         $rootScope.mainControllerAuthentication = true;
+                        $rootScope.itsAdmin = "";
+                        var currentUser = identity.getCurrentUser();
+
+                        currentUser.then(function(user){
+                            if(user.isAdmin){
+                                if(user.Username === 'admin@softuni.bg'){
+                                    $rootScope.checkForMainAdmin = true;
+                                }
+                                else{
+                                    $rootScope.checkForMainAdmin = false;
+                                }
+                                $rootScope.checkForAddProjectButton = true;
+                            }
+                            else{
+                                if(user.Username === 'admin@softuni.bg'){
+                                    $rootScope.checkForMainAdmin = true;
+                                }
+                                else{
+                                    $rootScope.checkForMainAdmin = false;
+                                }
+                                $rootScope.checkForAddProjectButton = false;
+                            }
+                        });
                         $location.path('/fakePath');
                     });
 

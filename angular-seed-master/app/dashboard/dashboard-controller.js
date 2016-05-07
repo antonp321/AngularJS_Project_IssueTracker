@@ -1,7 +1,7 @@
 angular.module('issueTracker.dashboard', ['issueTracker.user.authentication'])
 
 
-    .controller('dashboardController', ['$scope','listProjects', 'authentication', function($scope, listProjects, authentication){
+    .controller('dashboardController', ['$scope','listProjects', 'authentication', 'identity', function($scope, listProjects, authentication, identity){
 
         //$scope.authenticationCheckerDashCtrl = authentication.isAuthenticated();
 

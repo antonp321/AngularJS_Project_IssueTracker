@@ -45,16 +45,29 @@ angular.module('issueTracker', [
        authentication.refreshCookie();
         if(authentication.isAuthenticated()){
             $rootScope.mainControllerAuthentication = true;
-        }
 
-        var currentUser = identity.getCurrentUser();
 
-        if(currentUser.isAdmin){
-            $rootScope.checkForAddProjectButton = false;
+            var currentUser = identity.getCurrentUser();
+
+            currentUser.then(function(user){
+                if(user.isAdmin){
+                    if(user.Username === 'admin@softuni.bg'){
+                        $rootScope.checkForMainAdmin = true;
+                    }
+                    else{
+                        $rootScope.checkForMainAdmin = false;
+                    }
+                    $rootScope.checkForAddProjectButton = true;
+                }
+                else{
+                    $rootScope.checkForAddProjectButton = false;
+                }
+            });
         }
-        else{
-            $rootScope.checkForAddProjectButton = true;
-        }
+        //else{
+        //    $rootScope.checkForMainAdmin = false;
+        //    $rootScope.checkForAddProjectButton = false;
+        //}
     }])
 
       .constant('main_URL', 'http://softuni-issue-tracker.azurewebsites.net/api/')

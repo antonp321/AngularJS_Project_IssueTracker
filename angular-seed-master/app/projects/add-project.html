@@ -1,6 +1,6 @@
 <div ng-controller="AddProjectsController">
     <div ng-if=checkForAddProjectButton id="formsContainer">
-        <form class="form-horizontal" name="addProjectForm">
+        <form class="form-horizontal" ng-controller="AddProjectsController" name="addProjectForm">
             <fieldset>
                 <div class="col-lg-3">
                     <br/>
@@ -20,18 +20,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="leadId">LeadId</label>
-                        <input class="form-control"  ng-model="project.LeadId" required="required" type="text" id="leadId">
+                        <label for="leadId">LeadId</label><br/>
+                        <div class="col-lg-10">
+                            <select class="form-control" required="required" ng-model="project.LeadId" id="leadId">
+                                <option ng-repeat="el in leadersArray" value={{el.Id}}>{{el.Username}}</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label" for="Priorities">Priorities</label>
-                        <input class="form-control" required="required" ng-model="project.Priorities" type="text" id="Priorities">
+                        <input class="form-control" placeholder="Separate the priorities with comma(,)" required="required" ng-model="project.Priorities" type="text" id="Priorities">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label" for="Labels">Labels</label>
-                        <input class="form-control" required="required" ng-model="project.Labels" type="text" id="Labels">
+                        <input class="form-control" placeholder="Separate the labels with comma(,)" required="required" ng-model="project.Labels" type="text" id="Labels">
                     </div>
 
                     <div class="form-group">
@@ -40,6 +44,7 @@
                 </div>
             </fieldset>
         </form>
+
     </div>
 
 </div>
