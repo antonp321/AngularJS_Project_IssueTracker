@@ -28,6 +28,13 @@
       </select>
      <button ng-click="makeAdmin1(nonAdminUser.idd)">Make Admin</button>
     {{itsAdmin}}
+      <button ng-controller="dashboardController" ng-click="clickForAllProjects()">List All Projects</button><br />
+    <br /><br />
+
+    <div ng-controller="dashboardController" ng-repeat="el in allProjects15" style="color:blue">
+      <strong>{{el.Name}}</strong>
+    </div>
+
   </div>
 </div>
 

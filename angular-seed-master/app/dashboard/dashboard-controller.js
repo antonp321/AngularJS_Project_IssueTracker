@@ -7,11 +7,21 @@ angular.module('issueTracker.dashboard', ['issueTracker.user.authentication'])
 
         listProjects.latestProject()
                 .then(function(latestProj){
+
                     $scope.latestProj = latestProj.data;
                 });
 
         listProjects.latestIssues()
-            .then(function(latestProj){
-               $scope.latestIssue = latestProj.data;
+            .then(function(latestIssue){
+               $scope.latestIssue = latestIssue.data;
             });
-     }]);
+
+        $scope.clickForAllProjects = function(){
+            listProjects.getAllProjects()
+                .then(function(allProjects){
+                    console.log(allProjects.data);
+                    $scope.allProjects15 = allProjects.data;
+                })
+        };
+
+    }]);

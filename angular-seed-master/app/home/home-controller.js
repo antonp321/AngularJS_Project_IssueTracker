@@ -15,7 +15,7 @@ angular.module('issueTracker.home', ['issueTracker.user.authentication'])
             });
 
         }])
-        .controller('HomeController', ['$scope', '$location', '$rootScope', 'authentication', 'identity', function($scope, $location, $rootScope, authentication, identity){
+        .controller('HomeController', ['$scope', '$location', '$rootScope', 'authentication', 'identity', 'listProjects', function($scope, $location, $rootScope, authentication, identity, listProjects){
 
             $scope.authenticationCheckerHomeCtrl = authentication.isAuthenticated();
 

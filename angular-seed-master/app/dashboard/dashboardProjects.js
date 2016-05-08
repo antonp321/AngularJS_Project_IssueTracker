@@ -10,11 +10,18 @@ angular.module('issueTracker.dashboardProjects',[])
                         .then(function(listProjects){
                             deferred.resolve(listProjects);
                         });
-                    console.log(user.Id);
                 });
 
+            return deferred.promise;
+        }
 
-            //ТРЯБВА ДА СМЕНЯ URL-А ДА ТЪРСИ "МОЕТО ИД" НЕ ТОВА ХАРДКОДНАТОТО
+        function getAllProjects(){
+            var deferred = $q.defer();
+
+                    $http.get('http://softuni-issue-tracker.azurewebsites.net/projects')
+                        .then(function(listProjects){
+                            deferred.resolve(listProjects);
+                });
 
             return deferred.promise;
         }
@@ -33,7 +40,8 @@ angular.module('issueTracker.dashboardProjects',[])
 
         return {
             latestProject : getLatestProject,
-            latestIssues : getIssuesForProjectName
+            latestIssues : getIssuesForProjectName,
+            getAllProjects : getAllProjects
         }
 
     }]);

@@ -1,4 +1,9 @@
 <div ng-controller="ProjectsController">
+    <br /><br />
+    <div ng-repeat="el in latestProj1.Projects" style="color:blue">
+        <strong>{{el.Name}}</strong> <button>View</button>
+    </div>
+
     <div ng-if=checkForAddProjectButton>
         <br /><br /><button ng-click="addProjectURL()">Add Projects</button>
     </div>
